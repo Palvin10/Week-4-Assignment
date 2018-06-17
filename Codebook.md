@@ -1,9 +1,9 @@
 Identifiers:
 
-subject (unique ID of the test subject)
+subject (unique ID of the test subject)                                                                                                 
 activity (type of activity performed when being measured)
 
-Measurements:
+Measurements:                                                                                                                              
 tBodyAccMeanX
 tBodyAccMeanY
 tBodyAccMeanZ
@@ -85,10 +85,10 @@ fBodyBodyGyroJerkMagStd
 fBodyBodyGyroJerkMagMeanFreq
 
 
-Activity labels:
+Activity labels:                                                                                                                         
 WALKING (value 1): subject was walking
-WALKING_UPSTAIRS (value 2): subject was walking upstairs
-WALKING_DOWNSTAIRS (value 3): subject was walking downstairs
-SITTING (value 4): subject was sitting
-STANDING (value 5): subject was standing
-LAYING (value 6): subject was laying
+WALKING_UPSTAIRS (value 2): subject was walking upstairs                                                                                 
+WALKING_DOWNSTAIRS (value 3): subject was walking downstairs                                                                             
+SITTING (value 4): subject was sitting                                                                                                   
+STANDING (value 5): subject was standing                                                                                                 
+LAYING (value 6): subject was laying                                                                                                               
