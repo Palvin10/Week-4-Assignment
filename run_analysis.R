@@ -23,7 +23,7 @@ unzip(zipfile = "dataFiles.zip")
 
 
 
-# Load activity labels + features
+# Load the activity labels + features
 activityLabels <- fread(file.path(path, "UCI HAR Dataset/activity_labels.txt") ##extract out activity labels from .txt to R & specifying column names
                         , col.names = c("classLabels", "activityName"))
 features <- fread(file.path(path, "UCI HAR Dataset/features.txt") ## extract out features from .txt to R & specifying column names
@@ -32,16 +32,16 @@ featuresWanted <- grep("(mean|std)\\(\\)", features[, featureNames]) ##select on
 measurements <- features[featuresWanted, featureNames] ##combine features wanted and features names
 measurements <- gsub('[()]', '', measurements) ## remove () to ''
 
-# Load train datasets   ## bind subjects, activity and measurements in train datasets together.
+# Load the train datasets   ## bind subjects, activity and measurements in train datasets together.
 train <- fread(file.path(path, "UCI HAR Dataset/train/X_train.txt"))[, featuresWanted, with = FALSE]   ##select only the relevant columns with with=false 
 data.table::setnames(train, colnames(train), measurements) ##set the features names stored in measurements to appropriate columns
-trainActivities <- fread(file.path(path, "UCI HAR Dataset/train/Y_train.txt")       
+trainctivities <- fread(file.path(path, "UCI HAR Dataset/train/Y_train.txt")       
                          , col.names = c("Activity"))
 trainSubjects <- fread(file.path(path, "UCI HAR Dataset/train/subject_train.txt")
                        , col.names = c("SubjectNum"))
-train <- cbind(trainSubjects, trainActivities, train)
+train <- cbind(trainSubjects, trainActivities, train) ##column bind subjects and activities in training set
 
-# Load test datasets  ## bind subjects, activity and measurements in test datasets together.
+# Load the test datasets  ## bind subjects, activity and measurements in test datasets together.
 test <- fread(file.path(path, "UCI HAR Dataset/test/X_test.txt"))[, featuresWanted, with = FALSE]
 data.table::setnames(test, colnames(test), measurements)
 testActivities <- fread(file.path(path, "UCI HAR Dataset/test/Y_test.txt")
@@ -50,11 +50,11 @@ testSubjects <- fread(file.path(path, "UCI HAR Dataset/test/subject_test.txt")
                       , col.names = c("SubjectNum"))
 test <- cbind(testSubjects, testActivities, test)
 
-# merge datasets and add labels
+# merge train and test datasets 
 combined <- rbind(train, test)
 
 
-# Convert classLabels to activityName basically. More explicit. 
+# Add labels. Convert classLabels to activityName.  
 combined[["Activity"]] <- factor(combined[, Activity]
                                  , levels = activityLabels[["classLabels"]]
                                  , labels = activityLabels[["activityName"]])
