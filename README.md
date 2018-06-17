@@ -1,7 +1,7 @@
 # Week-4-Assignment
 Peer-graded Assignment: Getting and Cleaning Data Course Project
 # This project includes four files: README.md, Codebook.md, run_analysis.R, tidy.txt
-# Followings are done (run_analysis.R):
+Followings are done (run_analysis.R):
 1.	Download the dataset to working directory and unzip.
 2.	Load the following datasets: X_train.txt, X_test.txt, Y_train.txt, Y_test.txt, subject_train.txt, subject_test.txt, features.txt,       activity_labels.txt.
 3.	Extract the variables that contains the measurements on mean and standard deviation of the respective activity performed by subject     for train and test dataset.
